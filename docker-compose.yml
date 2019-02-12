@@ -12,12 +12,26 @@ services:
     image: bitcore-node
     links:
       - database
+      - bitcoind
     ports:
       - 8100:8100
       - 3000:3000
     environment:
       - DB_HOST=database
+      - BTC_HOST=bitcoind
+    volumes:
+        - ./bitcore.config.json:/usr/src/app/bitcore.config.json
     env_file: .env
+
+  bitcoind:
+      image: kylemanna/bitcoind
+      container_name: bitcoind
+      ports:
+          - 127.0.0.1:20008:20008
+          - 127.0.0.1:20009:20009
+      volumes:
+          - /home/ubuntu/volume/bitcoin:/bitcoin
+          - ./bitcoin.conf:/bitcoin/.bitcoin/bitcoin.conf
 
 #insight:
   #image: insight
