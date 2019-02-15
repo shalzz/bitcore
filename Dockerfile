@@ -24,5 +24,5 @@ COPY . .
 EXPOSE 3000
 EXPOSE 8100
 #CMD ["./node_modules/.bin/lerna", "run", "start"]
-CMD ["npm", "--prefix=./packages/bitcore-node", "start"]
+CMD ["npm", "--prefix=./packages/bitcore-node","run", "start"]
 #CMD ["npm", "--prefix=./packages/insight", "start"]

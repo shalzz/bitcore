@@ -5,7 +5,7 @@ services:
     ports: 
     - 27017:27017
     volumes: 
-    - /data/db:/data/db
+    - /home/ubuntu/volume/data/db:/data/db
     
   bitcore-node:
     build: .
@@ -18,7 +18,6 @@ services:
       - 3000:3000
     environment:
       - DB_HOST=database
-      - BTC_HOST=bitcoind
     volumes:
         - ./bitcore.config.json:/usr/src/app/bitcore.config.json
     env_file: .env
