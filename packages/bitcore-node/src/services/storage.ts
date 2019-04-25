@@ -32,7 +32,7 @@ export class StorageService {
       let options = Object.assign({}, this.configService.get(), args);
       let { dbName, dbHost, dbPort, dbUser, dbPass } = options;
       let auth = dbUser !== '' && dbPass !== '' ? `${dbUser}:${dbPass}@` : '';
-      const connectUrl = `mongodb://${auth}${dbHost}:${dbPort}/${dbName}?socketTimeoutMS=3600000&noDelay=true`;
+      const connectUrl = `mongodb://${auth}${dbHost}:${dbPort}/${dbName}?socketTimeoutMS=3600000&noDelay=true&authSource=admin`;
       let attemptConnect = async () => {
         return MongoClient.connect(
           connectUrl,
